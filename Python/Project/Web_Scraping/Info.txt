@@ -1,0 +1,67 @@
+Hands-on lab: Webscraping
+
+Web scraping is used for extraction of relevant data from web pages. If you require some data from a web page in a public domain, web scraping makes the process of data extraction quite convenient. The use of web scraping, however, requires some basic knowledge of the structure of HTML pages. In this lab, you will learn the process of analyzing the HTML code of a web page and how to extract the required information from it using web scraping in Python.
+
+Objectives
+By the end of this lab, you will be able to:
+
+Use the requests and BeautifulSoup libraries to extract the contents of a web page
+
+Analyze the HTML code of a webpage to find the relevant information
+
+Extract the relevant information and save it in the required form
+
+Scenario
+Consider that you have been hired by a Multiplex management organization to extract the information of the top 50 movies with the best average rating from the web link shared below.
+
+1
+https://web.archive.org/web/20230902185655/https://en.everybodywiki.com/100_Most_Highly-Ranked_Films
+Copied!
+The information required is Average Rank, Film, and Year.
+You are required to write a Python script webscraping_movies.py that extracts the information and saves it to a CSV file top_50_films.csv. You are also required to save the same information to a database Movies.db under the table name Top_50
+
+
+Initial steps
+You require the following libraries for this lab.
+
+pandas library for data storage and manipulation.
+
+BeautifulSoup library for interpreting the HTML document.
+
+requests library to communicate with the web page.
+
+sqlite3 for creating the database instance.
+
+
+While requests and sqlite3 come bundled with Python3, you need to install pandas and BeautifulSoup libraries to the IDE.
+
+For this, run the following commands in a terminal window.
+
+python3.11 -m pip install pandas
+python3.11 -m pip install bs4
+Copied!Executed!
+Now, create a new file by the name of webscraping_movies.py in the path /home/project/.
+
+You will write all of your code in this file.
+
+The rows of the table needed can be accessed using the find_all() function with the BeautifulSoup
+
+The code functions as follows.
+
+Iterate over the contents of the variable rows.
+Check for the loop counter to restrict to 50 entries.
+Extract all the td data objects in the row and save them to col.
+Check if the length of col is 0, that is, if there is no data in a current row. This is important since, many timesm there are merged rows that are not apparent in the web page appearance.
+Create a dictionary data_dict with the keys same as the columns of the dataframe created for recording the output earlier and corresponding values from the first three headers of data.
+Convert the dictionary to a dataframe and concatenate it with the existing one. This way, the data keeps getting appended to the dataframe with every iteration of the loop.
+Increment the loop counter.
+Once the counter hits 50, stop iterating over rows and break the loop.
+
+Practice problems
+Try the following practice problems to test your understanding of the lab. Please note that the solutions for the following are not shared. You are encouraged to use the discussion forums in case you need help.
+
+Modify the code to extract Film, Year, and Rotten Tomatoes' Top 100 headers.
+
+Restrict the results to only the top 25 entries.
+
+Filter the output to print only the films released in the 2000s (year 2000 included).

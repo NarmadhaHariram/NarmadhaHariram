@@ -1,0 +1,55 @@
+Hands-on Lab: Accessing Databases using Python Script
+
+Using databases is an important and useful method of sharing information. To preserve repeated storage of the same files containing the required data, it is a good practice to save the said data on a database on a server and access the required subset of information using database management systems.
+
+In this lab, you'll learn how to create a database, load data from a CSV file as a table, and then run queries on the data using Python.
+
+Objectives
+In this lab you'll learn how to:
+
+Create a database using Python
+
+Load the data from a CSV file as a table to the database
+
+Run basic "queries" on the database to access the information
+
+Scenario
+Consider a dataset of employee records that is available with an HR team in a CSV file. As a Data Engineer, you are required to create the database called STAFF and load the contents of the CSV file as a table called INSTRUCTORS. The headers of the available data are :
+
+Header	Description
+ID	Employee ID
+FNAME	First Name
+LNAME	Last Name
+CITY	City of residence
+CCODE	Country code (2 letters)
+
+Run the following command in the terminal. Make sure the current directory in the terminal window is /home/project/.
+
+1
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-PY0221EN-Coursera/labs/v2/INSTRUCTOR.csv
+Copied!Executed!
+The file INSTRUCTOR.csv should now be available in the location /home/project/. You can check its contents by clicking it from the Explorer menu.
+
+Let us first create a database using Python.
+
+Open db_code.py and import the sqlite3 library using the below mentioned command.
+
+1
+import sqlite3
+Copied!
+Import the pandas library in db_code.py using the following code.
+
+1
+import pandas as pd
+Copied!
+Now, you can use SQLite3 to create and connect your process to a new database STAFF using the following statements.
+
+1
+conn = sqlite3.connect('STAFF.db')
+Copied!
+Remember to save the file using Ctrl+S.
+
+
+if_exists = 'fail'	Default. The command doesn't work if a table with the same name exists in the database.
+if_exists = 'replace'	The command replaces the existing table in the database with the same name.
+if_exists = 'append'	The command appends the new data to the existing table with the same name.
